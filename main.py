@@ -11,7 +11,7 @@ from routers import task_router
 async def lifespan(app: FastAPI):
     await create_tables(to_delete=True)
     yield
-    print("Выключение")
+    print("Выключение проекта!")
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(task_router)
