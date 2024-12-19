@@ -17,5 +17,4 @@ async def get_tasks() -> list[TasksSchema]:
 @task_router.post("/", name="Добавление задачи")
 async def add_task(task: Annotated[TasksSchema, Depends()]) -> StatusTasks:
     add_task = await TaskRepository.create_task(task)
-    print(StatusTasks(ok=True, task_id=add_task).model_dump())
     return StatusTasks(ok=True, task_id=add_task)
