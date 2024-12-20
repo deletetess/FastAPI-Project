@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from schemas import TasksSchema, StatusTasks
+from schemas import TasksSchema, StatusTasks, TaskIDSchema
 from typing import Annotated
 
 from repository import TaskRepository
@@ -10,7 +10,7 @@ task_router = APIRouter(
 )
 
 @task_router.get("/", name="Получение задач")
-async def get_tasks() -> list[TasksSchema]:
+async def get_tasks() -> list[TaskIDSchema]:
     all_tasks = await TaskRepository.get_all_tasks()
     return all_tasks
 

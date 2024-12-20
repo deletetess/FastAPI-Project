@@ -3,7 +3,7 @@ from pydantic import BaseModel, ConfigDict
 
 class TasksSchema(BaseModel):
     name: str
-    description: str = None
+    description: str | None = None
 
     model_config = ConfigDict(from_attributes=True)
 
